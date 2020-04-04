@@ -75,7 +75,7 @@
         <!--Ongoing tasks-->
         <scene sceneID="Ry4-BY-a1T">
             <objects>
-                <viewController id="2xD-9H-ubZ" customClass="OngoingTaskOverviewViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ongoingTask" id="2xD-9H-ubZ" customClass="OngoingTaskOverviewViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NdY-SF-iRe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,7 +144,7 @@
         <!--newTask-->
         <scene sceneID="H80-Rt-JQh">
             <objects>
-                <viewController title="newTask" id="dMq-99-8Re" customClass="CreateTaskViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newTask" title="newTask" id="dMq-99-8Re" customClass="CreateTaskViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6jx-Fv-8Ni">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -209,16 +209,6 @@
                                             <action selector="cancelButtonPressed:" destination="dMq-99-8Re" eventType="touchUpInside" id="IRi-on-o6M"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EjY-a0-DFM">
-                                        <rect key="frame" x="145" y="19" width="125" height="30"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <color key="tintColor" red="0.98410767316818237" green="0.97264212369918823" blue="0.95299237966537476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Mark complete"/>
-                                        <connections>
-                                            <action selector="markCompleteButtonPressed:" destination="dMq-99-8Re" eventType="touchUpInside" id="khQ-zA-HuW"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
@@ -231,13 +221,11 @@
                                     <constraint firstItem="89u-vL-Tnn" firstAttribute="leading" secondItem="i5X-pS-WZU" secondAttribute="leading" constant="34" id="J2X-ru-MCD"/>
                                     <constraint firstItem="i34-BT-nCZ" firstAttribute="leading" secondItem="i5X-pS-WZU" secondAttribute="leading" constant="39" id="LRf-gm-8Vf"/>
                                     <constraint firstItem="TxY-DO-w8X" firstAttribute="top" secondItem="zuh-hg-8Yl" secondAttribute="bottom" constant="2" id="MDd-IT-Rpq"/>
-                                    <constraint firstItem="EjY-a0-DFM" firstAttribute="centerX" secondItem="i5X-pS-WZU" secondAttribute="centerX" id="NFh-bZ-8Nq"/>
                                     <constraint firstItem="89u-vL-Tnn" firstAttribute="top" secondItem="Dmf-db-FhZ" secondAttribute="bottom" constant="11" id="Ng9-t1-LPf"/>
                                     <constraint firstAttribute="trailing" secondItem="89u-vL-Tnn" secondAttribute="trailing" constant="34" id="PPD-Id-aSL"/>
                                     <constraint firstAttribute="trailing" secondItem="TxY-DO-w8X" secondAttribute="trailing" constant="34" id="R9v-Sx-c1M"/>
                                     <constraint firstAttribute="bottom" secondItem="iNi-j5-Pdx" secondAttribute="bottom" constant="67" id="Rjs-Uk-fye"/>
                                     <constraint firstItem="iNi-j5-Pdx" firstAttribute="leading" secondItem="i5X-pS-WZU" secondAttribute="leading" constant="34" id="S42-tP-oOJ"/>
-                                    <constraint firstItem="EjY-a0-DFM" firstAttribute="top" secondItem="i5X-pS-WZU" secondAttribute="top" constant="19" id="Tdv-vB-kAy"/>
                                     <constraint firstAttribute="trailing" secondItem="YGT-JY-bJO" secondAttribute="trailing" constant="34" id="Ub7-fp-YJD"/>
                                     <constraint firstItem="Dmf-db-FhZ" firstAttribute="top" secondItem="i5X-pS-WZU" secondAttribute="top" constant="19" id="VCF-Cy-SJl"/>
                                     <constraint firstItem="89u-vL-Tnn" firstAttribute="centerX" secondItem="i5X-pS-WZU" secondAttribute="centerX" id="Vpa-mW-fpr"/>
@@ -263,7 +251,6 @@
                     </view>
                     <connections>
                         <outlet property="deadlineText" destination="TxY-DO-w8X" id="ibI-du-4Bo"/>
-                        <outlet property="markCompleteOutlet" destination="EjY-a0-DFM" id="zQL-hW-5Qw"/>
                         <outlet property="taskDescriptionText" destination="iNi-j5-Pdx" id="EmO-9k-zk4"/>
                         <outlet property="taskTitleText" destination="YGT-JY-bJO" id="HV4-jz-bFZ"/>
                     </connections>
@@ -272,10 +259,10 @@
             </objects>
             <point key="canvasLocation" x="1137.68115942029" y="-129.24107142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--editTask-->
         <scene sceneID="uG2-ix-pt0">
             <objects>
-                <viewController id="oOG-dp-r67" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editTask" title="editTask" id="oOG-dp-r67" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wyF-XN-O9O">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -291,8 +278,8 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJa-Hc-CIo">
-                                        <rect key="frame" x="281" y="0.0" width="103" height="30"/>
-                                        <state key="normal" title="Mark complete"/>
+                                        <rect key="frame" x="347" y="0.0" width="37" height="30"/>
+                                        <state key="normal" title="Done"/>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gyS-Gz-jEt">
                                         <rect key="frame" x="34" y="41" width="346" height="19.5"/>
@@ -331,8 +318,18 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWf-hw-t7J">
-                                        <rect key="frame" x="30" y="0.0" width="34" height="30"/>
-                                        <state key="normal" title="Back"/>
+                                        <rect key="frame" x="30" y="0.0" width="48" height="30"/>
+                                        <state key="normal" title="Cancel"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPt-9q-QFg">
+                                        <rect key="frame" x="152" y="0.0" width="110" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <color key="tintColor" red="0.98410767316818237" green="0.97264212369918823" blue="0.95299237966537476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Mark complete"/>
+                                        <connections>
+                                            <action selector="markCompleteButtonPressed:" destination="dMq-99-8Re" eventType="touchUpInside" id="pVl-dN-9xU"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -351,6 +348,7 @@
                                     <constraint firstItem="SoL-tH-24Z" firstAttribute="leading" secondItem="hTJ-3m-pH9" secondAttribute="leading" constant="34" id="VAZ-Px-nyF"/>
                                     <constraint firstAttribute="trailing" secondItem="gyS-Gz-jEt" secondAttribute="trailing" constant="34" id="WQI-0F-nYj"/>
                                     <constraint firstItem="gyS-Gz-jEt" firstAttribute="top" secondItem="WJa-Hc-CIo" secondAttribute="bottom" constant="11" id="Yos-Y0-XKc"/>
+                                    <constraint firstItem="PPt-9q-QFg" firstAttribute="top" secondItem="hTJ-3m-pH9" secondAttribute="top" id="cwY-GE-nNb"/>
                                     <constraint firstAttribute="trailing" secondItem="aSG-Hr-JBL" secondAttribute="trailing" constant="34" id="ezF-Xe-jHC"/>
                                     <constraint firstItem="WJa-Hc-CIo" firstAttribute="top" secondItem="hTJ-3m-pH9" secondAttribute="top" id="fxC-5R-myO"/>
                                     <constraint firstItem="08D-Rg-25e" firstAttribute="top" secondItem="gyS-Gz-jEt" secondAttribute="bottom" constant="2" id="g20-3r-Rsk"/>
@@ -361,6 +359,7 @@
                                     <constraint firstAttribute="trailing" secondItem="N8U-dh-HzQ" secondAttribute="trailing" constant="34" id="si7-CN-X9A"/>
                                     <constraint firstItem="SoL-tH-24Z" firstAttribute="top" secondItem="N8U-dh-HzQ" secondAttribute="bottom" constant="2" id="siA-ws-Qng"/>
                                     <constraint firstItem="aSG-Hr-JBL" firstAttribute="leading" secondItem="hTJ-3m-pH9" secondAttribute="leading" constant="34" id="uAh-vb-Yjy"/>
+                                    <constraint firstItem="PPt-9q-QFg" firstAttribute="centerX" secondItem="hTJ-3m-pH9" secondAttribute="centerX" id="xPo-hS-aA1"/>
                                     <constraint firstItem="gyS-Gz-jEt" firstAttribute="leading" secondItem="hTJ-3m-pH9" secondAttribute="leading" constant="34" id="zzQ-9g-FJi"/>
                                 </constraints>
                             </view>

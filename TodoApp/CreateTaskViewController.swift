@@ -12,7 +12,6 @@ class CreateTaskViewController: UIViewController {
     @IBOutlet weak var taskTitleText: UITextField!
     @IBOutlet weak var deadlineText: UITextField!
     @IBOutlet weak var taskDescriptionText: UITextView!
-    @IBOutlet weak var markCompleteOutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +30,16 @@ class CreateTaskViewController: UIViewController {
         if taskDescriptionText.text == "" {
             taskDescriptionText.text = "-"
         }
-        var tempDictionary : Dictionary = ["taskTitle" : taskTitleText.text, "taskDeadline" : deadlineText.text, "taskDes" : taskDescriptionText.text] as [String: Any]
+        var tempDictionary : Dictionary = ["taskTitle" : taskTitleText.text, "taskDeadline" : deadlineText.text, "taskDes" : taskDescriptionText.text, "complete" : false] as [String: Any]
         CreateTaskInFirestore(withValues: tempDictionary) {(error) in
             if error != nil {
                 print(error?.localizedDescription)
                 return
             }
         }
+        self.dismiss(animated: true, completion: nil)
+//        let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ongoingTask") as! UIViewController//initialize storyboard
+//        self.present(mainView, animated: true, completion: nil)
         
     }
     @IBAction func cancelButtonPressed(_ sender: Any) {

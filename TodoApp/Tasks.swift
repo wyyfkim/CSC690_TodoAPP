@@ -43,3 +43,17 @@ func CreateTaskInFirestore(withValues : [String : Any], completion: @escaping (_
     }
 }
 
+func GetTasksInFirestore(compelte: Bool, completion:@escaping(_ querySnapshot:[QueryDocumentSnapshot])->Void) {
+    Firestore.firestore().collection("Task").whereField("complete", isEqualTo: compelte).getDocuments() { (querySnapshot, err) in
+        if let err = err {
+            print("Error getting documents: \(err)")
+        } else {
+            if let documents = querySnapshot?.documents{
+                completion(documents)
+            }
+        }
+
+    }
+}
+
+
