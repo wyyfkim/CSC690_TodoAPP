@@ -75,7 +75,7 @@
         <!--Ongoing tasks-->
         <scene sceneID="Ry4-BY-a1T">
             <objects>
-                <viewController id="2xD-9H-ubZ" sceneMemberID="viewController">
+                <viewController id="2xD-9H-ubZ" customClass="OngoingTaskOverviewViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NdY-SF-iRe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,7 +85,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="70" id="ptg-Nu-kw8">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="70" id="ptg-Nu-kw8" customClass="OngoingTaskTableViewCell" customModule="TodoApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ptg-Nu-kw8" id="0I9-Ku-rMz">
@@ -104,6 +104,9 @@
                                                 <constraint firstItem="OKn-wg-yTI" firstAttribute="centerY" secondItem="0I9-Ku-rMz" secondAttribute="centerY" id="nVr-dP-ZRh"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="taskTitle" destination="OKn-wg-yTI" id="TvA-4X-sfM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -141,7 +144,7 @@
         <!--newTask-->
         <scene sceneID="H80-Rt-JQh">
             <objects>
-                <viewController title="newTask" id="dMq-99-8Re" sceneMemberID="viewController">
+                <viewController title="newTask" id="dMq-99-8Re" customClass="CreateTaskViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6jx-Fv-8Ni">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -159,6 +162,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmf-db-FhZ">
                                         <rect key="frame" x="338" y="19" width="37" height="30"/>
                                         <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="doneButtonPressed:" destination="dMq-99-8Re" eventType="touchUpInside" id="k0J-U3-NbZ"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="89u-vL-Tnn">
                                         <rect key="frame" x="34" y="60" width="346" height="19.5"/>
@@ -197,8 +203,21 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i34-BT-nCZ">
-                                        <rect key="frame" x="39" y="19" width="103" height="30"/>
+                                        <rect key="frame" x="39" y="19" width="48" height="30"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="dMq-99-8Re" eventType="touchUpInside" id="IRi-on-o6M"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EjY-a0-DFM">
+                                        <rect key="frame" x="145" y="19" width="125" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <color key="tintColor" red="0.98410767316818237" green="0.97264212369918823" blue="0.95299237966537476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Mark complete"/>
+                                        <connections>
+                                            <action selector="markCompleteButtonPressed:" destination="dMq-99-8Re" eventType="touchUpInside" id="khQ-zA-HuW"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -212,11 +231,13 @@
                                     <constraint firstItem="89u-vL-Tnn" firstAttribute="leading" secondItem="i5X-pS-WZU" secondAttribute="leading" constant="34" id="J2X-ru-MCD"/>
                                     <constraint firstItem="i34-BT-nCZ" firstAttribute="leading" secondItem="i5X-pS-WZU" secondAttribute="leading" constant="39" id="LRf-gm-8Vf"/>
                                     <constraint firstItem="TxY-DO-w8X" firstAttribute="top" secondItem="zuh-hg-8Yl" secondAttribute="bottom" constant="2" id="MDd-IT-Rpq"/>
+                                    <constraint firstItem="EjY-a0-DFM" firstAttribute="centerX" secondItem="i5X-pS-WZU" secondAttribute="centerX" id="NFh-bZ-8Nq"/>
                                     <constraint firstItem="89u-vL-Tnn" firstAttribute="top" secondItem="Dmf-db-FhZ" secondAttribute="bottom" constant="11" id="Ng9-t1-LPf"/>
                                     <constraint firstAttribute="trailing" secondItem="89u-vL-Tnn" secondAttribute="trailing" constant="34" id="PPD-Id-aSL"/>
                                     <constraint firstAttribute="trailing" secondItem="TxY-DO-w8X" secondAttribute="trailing" constant="34" id="R9v-Sx-c1M"/>
                                     <constraint firstAttribute="bottom" secondItem="iNi-j5-Pdx" secondAttribute="bottom" constant="67" id="Rjs-Uk-fye"/>
                                     <constraint firstItem="iNi-j5-Pdx" firstAttribute="leading" secondItem="i5X-pS-WZU" secondAttribute="leading" constant="34" id="S42-tP-oOJ"/>
+                                    <constraint firstItem="EjY-a0-DFM" firstAttribute="top" secondItem="i5X-pS-WZU" secondAttribute="top" constant="19" id="Tdv-vB-kAy"/>
                                     <constraint firstAttribute="trailing" secondItem="YGT-JY-bJO" secondAttribute="trailing" constant="34" id="Ub7-fp-YJD"/>
                                     <constraint firstItem="Dmf-db-FhZ" firstAttribute="top" secondItem="i5X-pS-WZU" secondAttribute="top" constant="19" id="VCF-Cy-SJl"/>
                                     <constraint firstItem="89u-vL-Tnn" firstAttribute="centerX" secondItem="i5X-pS-WZU" secondAttribute="centerX" id="Vpa-mW-fpr"/>
@@ -240,6 +261,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Mw-ZP-yDu"/>
                     </view>
+                    <connections>
+                        <outlet property="deadlineText" destination="TxY-DO-w8X" id="ibI-du-4Bo"/>
+                        <outlet property="markCompleteOutlet" destination="EjY-a0-DFM" id="zQL-hW-5Qw"/>
+                        <outlet property="taskDescriptionText" destination="iNi-j5-Pdx" id="EmO-9k-zk4"/>
+                        <outlet property="taskTitleText" destination="YGT-JY-bJO" id="HV4-jz-bFZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fpL-pJ-4rg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -372,7 +399,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="PbL-jN-bJe"/>
+        <segue reference="k6O-LH-hb8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book" catalog="system" width="128" height="101"/>
