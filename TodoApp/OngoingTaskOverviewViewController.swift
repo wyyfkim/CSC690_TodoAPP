@@ -13,19 +13,41 @@ class OngoingTaskOverviewViewController: UIViewController, UITableViewDelegate, 
     @IBOutlet weak var tableview: UITableView!
     
     
-    var ongoingTasks : [NSDictionary] = []
-//    override func viewWillAppear(_ animated: Bool) {
+    var ongoingTasks : [NSDictionary]!
+    override func viewWillAppear(_ animated: Bool) {
+        loadOngoingTask()
+        tableview.reloadData()
+    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        ongoingTasks = []
 //        loadOngoingTask()
+//        tableview.reloadData()
 //    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadOngoingTask()
+//        loadOngoingTask()
         tableview.delegate = self
         tableview.dataSource = self
         // Do any additional setup after loading the view.
     }
     
+    //MARK: IBActions:
+    @IBAction func DetailButtonPressed(_ sender: Any) {
+        print("View detail button pressed")
+        
+        guard let cell = (sender as AnyObject).superview?.superview as? OngoingTaskTableViewCell else {
+            return // or fatalError() or whatever
+        }
+        let indexPath = tableview.indexPath(for: cell)
+        let taskDetail = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "taskDetail") as! DetailViewController
+        taskDetail.task = ongoingTasks[indexPath!.row]
+        self.present(taskDetail, animated: true, completion: nil)
+    }
+    
+    
+    //MARK: helpers:
     func loadOngoingTask() {
+        ongoingTasks = []
         GetTasksInFirestore(compelte: false){(documents) in
             for document in documents {
                 self.ongoingTasks.append(document.data() as NSDictionary)
@@ -52,7 +74,6 @@ class OngoingTaskOverviewViewController: UIViewController, UITableViewDelegate, 
         
         
         cell.generateCell(taskList: recentOngoingTasks[indexPath.row], indexPath: indexPath)
-        print("!!!!!!!!!!!!!!!!")
         print(indexPath.row)
         return cell
     }

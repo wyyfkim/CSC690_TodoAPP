@@ -37,8 +37,10 @@ class CreateTaskViewController: UIViewController {
                 return
             }
         }
+        
         self.dismiss(animated: true, completion: nil)
-//        let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ongoingTask") as! UIViewController//initialize storyboard
+        
+        
 //        self.present(mainView, animated: true, completion: nil)
         
     }
