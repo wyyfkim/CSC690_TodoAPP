@@ -5,6 +5,9 @@
       location = "group:TodoAppUITests/../.gitignore">
    </FileRef>
    <FileRef
+      location = "group:TodoApp/../.gitignore">
+   </FileRef>
+   <FileRef
       location = "group:TodoApp.xcodeproj">
    </FileRef>
    <FileRef

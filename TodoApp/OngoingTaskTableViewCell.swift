@@ -23,4 +23,11 @@ class OngoingTaskTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func generateCell(taskList: NSDictionary, indexPath: IndexPath) {
+//        self.indexPath = indexPath
+        self.taskTitle.text = taskList["taskTitle"] as? String
+      
+    }
 }
+
+//["taskTitle": 1, "taskDeadline": 1, "taskDes": 1, "complete": 0]

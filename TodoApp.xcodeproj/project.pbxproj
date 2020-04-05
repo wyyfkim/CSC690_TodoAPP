@@ -166,6 +166,7 @@
 				AB5FBF772437FFAC008300C1 /* LaunchScreen.storyboard */,
 				AB5FBF7A2437FFAC008300C1 /* Info.plist */,
 				AB5FBF722437FFA7008300C1 /* TodoApp.xcdatamodeld */,
+				AB5FBFA524384767008300C1 /* .gitignore */,
 			);
 			path = TodoApp;
 			sourceTree = "<group>";
@@ -184,7 +185,6 @@
 			children = (
 				AB5FBF8E2437FFAC008300C1 /* TodoAppUITests.swift */,
 				AB5FBF902437FFAC008300C1 /* Info.plist */,
-				AB5FBFA524384767008300C1 /* .gitignore */,
 			);
 			path = TodoAppUITests;
 			sourceTree = "<group>";
