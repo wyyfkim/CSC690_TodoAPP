@@ -43,6 +43,17 @@ func CreateTaskInFirestore(withValues : [String : Any], completion: @escaping (_
     }
 }
 
+func UpdateTaskInFirestore(taskID: String, withValues : [String : Any], completion: @escaping (_ error: Error?) -> Void) {
+    print(taskID)
+    Firestore.firestore().collection("Task").document(taskID).setData(withValues) { err in
+        if let err = err {
+            print("Error writing document: \(err)")
+        } else {
+            print("Document successfully written!")
+        }
+    }
+}
+
 func GetTasksInFirestore(compelte: Bool, completion:@escaping(_ querySnapshot:[QueryDocumentSnapshot])->Void) {
     Firestore.firestore().collection("Task").whereField("complete", isEqualTo: compelte).getDocuments() { (querySnapshot, err) in
         if let err = err {

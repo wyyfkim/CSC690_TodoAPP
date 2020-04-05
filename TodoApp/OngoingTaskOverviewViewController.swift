@@ -13,7 +13,7 @@ class OngoingTaskOverviewViewController: UIViewController, UITableViewDelegate, 
     @IBOutlet weak var tableview: UITableView!
     
     
-    var ongoingTasks : [NSDictionary]!
+    var ongoingTasks : [Dictionary<String, Any>]!
     override func viewWillAppear(_ animated: Bool) {
         loadOngoingTask()
         tableview.reloadData()
@@ -40,7 +40,7 @@ class OngoingTaskOverviewViewController: UIViewController, UITableViewDelegate, 
         }
         let indexPath = tableview.indexPath(for: cell)
         let taskDetail = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "taskDetail") as! DetailViewController
-        taskDetail.task = ongoingTasks[indexPath!.row]
+        taskDetail.task = ongoingTasks[indexPath!.row] as Dictionary
         self.present(taskDetail, animated: true, completion: nil)
     }
     
@@ -50,8 +50,10 @@ class OngoingTaskOverviewViewController: UIViewController, UITableViewDelegate, 
         ongoingTasks = []
         GetTasksInFirestore(compelte: false){(documents) in
             for document in documents {
-                self.ongoingTasks.append(document.data() as NSDictionary)
-                print(document.data())
+                var tempDict : Dictionary = document.data() as Dictionary as Dictionary
+                tempDict["ID"] = document.documentID
+                self.ongoingTasks.append(tempDict)
+//                print(document.data())
 //                print(type(of: document.data()))
             }
             self.tableview.reloadData()
@@ -70,7 +72,7 @@ class OngoingTaskOverviewViewController: UIViewController, UITableViewDelegate, 
         
 //        cell.delegate = self
         
-        var recentOngoingTasks: [NSDictionary]! = ongoingTasks
+        var recentOngoingTasks: [Dictionary]! = ongoingTasks
         
         
         cell.generateCell(taskList: recentOngoingTasks[indexPath.row], indexPath: indexPath)

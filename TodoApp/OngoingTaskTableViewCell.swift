@@ -23,7 +23,7 @@ class OngoingTaskTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func generateCell(taskList: NSDictionary, indexPath: IndexPath) {
+    func generateCell(taskList: Dictionary<String, Any>, indexPath: IndexPath) {
 //        self.indexPath = indexPath
         self.taskTitle.text = taskList["taskTitle"] as? String
       

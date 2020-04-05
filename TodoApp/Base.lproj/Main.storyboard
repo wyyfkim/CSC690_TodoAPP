@@ -349,6 +349,7 @@
                                         <color key="tintColor" red="0.98410767316818237" green="0.97264212369918823" blue="0.95299237966537476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Mark complete"/>
                                         <connections>
+                                            <action selector="markCompleteButtonPressed:" destination="oOG-dp-r67" eventType="touchUpInside" id="ZEN-6L-k9O"/>
                                             <action selector="markCompleteButtonPressed:" destination="dMq-99-8Re" eventType="touchUpInside" id="pVl-dN-9xU"/>
                                         </connections>
                                     </button>

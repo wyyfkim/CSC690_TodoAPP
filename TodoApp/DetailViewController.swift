@@ -14,7 +14,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var taskDeadline: UITextField!
     @IBOutlet weak var taskDescription: UITextView!
     @IBOutlet weak var markCompleteButton: UIButton!
-    var task : NSDictionary?
+    var task : Dictionary<String, Any>?
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,7 @@ class DetailViewController: UIViewController {
     
     func setupUI() {
         if task != nil {
+            print(task)
             taskTitle.text = task!["taskTitle"] as! String
             taskDeadline.text = task!["taskDeadline"] as! String
             taskDescription.text = task!["taskDes"] as! String
@@ -40,8 +41,35 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
+        var tempDict : Dictionary<String, Any> = ["taskTitle" : taskTitle.text, "taskDeadline" : taskDeadline.text, "taskDes" : taskDescription.text, "complete" : task!["complete"]] as [String : Any]
         
+        var documentID : String = task!["ID"] as! String
+        UpdateTaskInFirestore(taskID: documentID, withValues: tempDict) {(error) in
+           if error != nil {
+               print(error?.localizedDescription)
+               return
+           }
+        }
+        self.dismiss(animated: true)
     }
+    
+    @IBAction func markCompleteButtonPressed(_ sender: Any) {
+        if task != nil {
+            var tempDict : Dictionary<String, Any> = ["taskTitle" : taskTitle.text, "taskDeadline" : taskDeadline.text, "taskDes" : taskDescription.text, "complete" : true] as [String : Any]
+            
+            var documentID : String = task!["ID"] as! String
+            UpdateTaskInFirestore(taskID: documentID, withValues: tempDict) {(error) in
+               if error != nil {
+                   print(error?.localizedDescription)
+                   return
+               }
+            }
+            self.dismiss(animated: true)
+            
+//            task!["complete"] = true
+        }
+    }
+    
     
 
 }
