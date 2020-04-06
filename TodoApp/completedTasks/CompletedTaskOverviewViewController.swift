@@ -30,6 +30,20 @@ class CompletedTaskOverviewViewController: UIViewController, UITableViewDelegate
             // Do any additional setup after loading the view.
         }
     
+    
+    @IBAction func viewDetailButtonPressed(_ sender: Any) {
+        print("View detail button pressed")
+        
+        guard let cell = (sender as AnyObject).superview?.superview as? CompletedTaskTableViewCell else {
+            return // or fatalError() or whatever
+        }
+        let indexPath = tableview.indexPath(for: cell)
+        let taskDetail = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "taskDetail") as! DetailViewController
+        taskDetail.task = ongoingTasks[indexPath!.row] as Dictionary
+        self.present(taskDetail, animated: true, completion: nil)
+    }
+    
+    
     //MARK: helpers:
         func loadOngoingTask() {
             ongoingTasks = []

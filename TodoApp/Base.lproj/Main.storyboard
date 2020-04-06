@@ -20,11 +20,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CompletedCell" rowHeight="70" id="yKo-A6-Bjo" customClass="CompletedTaskTableViewCell" customModule="TodoApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CompletedCell" rowHeight="70" id="yKo-A6-Bjo" customClass="CompletedTaskTableViewCell" customModule="TodoApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yKo-A6-Bjo" id="Hvm-Z6-wCD">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create github repo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qd7-1j-RHe">
@@ -33,9 +33,23 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4q-6j-qlO">
+                                                    <rect key="frame" x="327" y="24" width="76" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="76" id="i63-27-DVD"/>
+                                                        <constraint firstAttribute="width" constant="76" id="tPg-Nv-5vi"/>
+                                                    </constraints>
+                                                    <state key="normal" image="info.circle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="DetailButtonPressed:" destination="2xD-9H-ubZ" eventType="touchUpInside" id="e9i-19-vjw"/>
+                                                        <action selector="viewDetailButtonPressed:" destination="vEt-Ly-UKH" eventType="touchUpInside" id="bkd-6O-OcZ"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Qd7-1j-RHe" firstAttribute="leading" secondItem="Hvm-Z6-wCD" secondAttribute="leadingMargin" constant="8" id="EvP-Cu-z1F"/>
+                                                <constraint firstItem="W4q-6j-qlO" firstAttribute="centerY" secondItem="Hvm-Z6-wCD" secondAttribute="centerY" id="JBW-oD-yCd"/>
+                                                <constraint firstAttribute="trailing" secondItem="W4q-6j-qlO" secondAttribute="trailing" constant="5" id="Mdz-ta-Aeg"/>
                                                 <constraint firstItem="Qd7-1j-RHe" firstAttribute="centerY" secondItem="Hvm-Z6-wCD" secondAttribute="centerY" id="fq7-2x-7dC"/>
                                             </constraints>
                                         </tableViewCellContentView>
