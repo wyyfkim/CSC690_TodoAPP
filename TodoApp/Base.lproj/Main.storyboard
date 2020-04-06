@@ -10,8 +10,7 @@
         <!--Completed-->
         <scene sceneID="LLF-7P-QBe">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iQg-Zz-GV7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="vEt-Ly-UKH" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="completedTask" id="vEt-Ly-UKH" customClass="CompletedTaskOverviewViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S9S-K6-YAu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +20,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="70" id="yKo-A6-Bjo">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CompletedCell" rowHeight="70" id="yKo-A6-Bjo" customClass="CompletedTaskTableViewCell" customModule="TodoApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yKo-A6-Bjo" id="Hvm-Z6-wCD">
@@ -40,6 +39,9 @@
                                                 <constraint firstItem="Qd7-1j-RHe" firstAttribute="centerY" secondItem="Hvm-Z6-wCD" secondAttribute="centerY" id="fq7-2x-7dC"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="taskTitle" destination="Qd7-1j-RHe" id="CEV-Mm-xQ9"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -68,7 +70,11 @@
                         <viewLayoutGuide key="safeArea" id="ftW-LD-KYM"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Completed" image="folder" catalog="system" id="GkV-vJ-6jy"/>
+                    <connections>
+                        <outlet property="tableview" destination="V0x-Ua-v2E" id="qUR-vU-233"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iQg-Zz-GV7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="369" y="243"/>
         </scene>
@@ -516,7 +522,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="k6O-LH-hb8"/>
+        <segue reference="PbL-jN-bJe"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book" catalog="system" width="128" height="101"/>
