@@ -31,6 +31,9 @@ class CompletedTaskOverviewViewController: UIViewController, UITableViewDelegate
         }
     
     
+    @IBAction func refreshButtonPressed(_ sender: Any) {
+        loadOngoingTask()
+    }
     @IBAction func viewDetailButtonPressed(_ sender: Any) {
         print("View detail button pressed")
         
@@ -61,7 +64,6 @@ class CompletedTaskOverviewViewController: UIViewController, UITableViewDelegate
 
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            print(ongoingTasks.count)
             return ongoingTasks.count
         }
         
@@ -75,7 +77,7 @@ class CompletedTaskOverviewViewController: UIViewController, UITableViewDelegate
             
             
             cell.generateCell(taskList: recentOngoingTasks[indexPath.row], indexPath: indexPath)
-            print(indexPath.row)
+//            print(indexPath.row)
             return cell
         }
 }

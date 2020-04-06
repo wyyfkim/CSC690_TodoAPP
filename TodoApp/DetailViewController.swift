@@ -25,14 +25,14 @@ class DetailViewController: UIViewController {
     
     func setupUI() {
         if task != nil {
-            print(task)
+//            print(task)
             taskTitle.text = task!["taskTitle"] as! String
             taskDeadline.text = task!["taskDeadline"] as! String
             taskDescription.text = task!["taskDes"] as! String
             if task!["complete"] as! Bool {
                 markCompleteButton.isHidden = true
             }
-            print(taskTitle.text)
+//            print(taskTitle.text)
         }
     }
     //MARK: IBAction
@@ -50,6 +50,12 @@ class DetailViewController: UIViewController {
                return
            }
         }
+        
+//        let ongoingTasks = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ongoingTask") as! OngoingTaskOverviewViewController
+//        ongoingTasks.modalPresentationStyle = .fullScreen
+//        self.present(ongoingTasks, animated: true, completion: nil)
+//
+        
         self.dismiss(animated: true)
     }
     
@@ -64,6 +70,10 @@ class DetailViewController: UIViewController {
                    return
                }
             }
+            
+//            let completedTasks = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "completedTask") as! CompletedTaskOverviewViewController
+//            completedTasks.modalPresentationStyle = .fullScreen
+//            self.present(completedTasks, animated: true, completion: nil)
             self.dismiss(animated: true)
             
 //            task!["complete"] = true

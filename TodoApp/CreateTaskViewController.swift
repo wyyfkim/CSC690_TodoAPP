@@ -37,9 +37,14 @@ class CreateTaskViewController: UIViewController {
                 return
             }
         }
-        
+//        let ongoingTasks = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ongoingTask") as! OngoingTaskOverviewViewController
+//
+//        self.definesPresentationContext = true
+//
+//        ongoingTasks.modalPresentationStyle = .fullScreen
+//        self.present(ongoingTasks, animated: true, completion: nil)
+//
         self.dismiss(animated: true, completion: nil)
-        
         
 //        self.present(mainView, animated: true, completion: nil)
         

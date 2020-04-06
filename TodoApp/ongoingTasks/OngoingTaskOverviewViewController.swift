@@ -19,9 +19,9 @@ class OngoingTaskOverviewViewController: UIViewController, UITableViewDelegate, 
         tableview.reloadData()
     }
 //    override func viewDidAppear(_ animated: Bool) {
-//        ongoingTasks = []
-//        loadOngoingTask()
-//        tableview.reloadData()
+////        ongoingTasks = []
+////        loadOngoingTask()
+////        tableview.reloadData()
 //    }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +32,10 @@ class OngoingTaskOverviewViewController: UIViewController, UITableViewDelegate, 
     }
     
     //MARK: IBActions:
+    @IBAction func refreshButtonPressed(_ sender: Any) {
+        loadOngoingTask()
+    }
+    
     @IBAction func DetailButtonPressed(_ sender: Any) {
         print("View detail button pressed")
         
@@ -62,7 +66,7 @@ class OngoingTaskOverviewViewController: UIViewController, UITableViewDelegate, 
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(ongoingTasks.count)
+//        print(ongoingTasks.count)
         return ongoingTasks.count
     }
     
@@ -74,9 +78,8 @@ class OngoingTaskOverviewViewController: UIViewController, UITableViewDelegate, 
         
         var recentOngoingTasks: [Dictionary]! = ongoingTasks
         
-        
         cell.generateCell(taskList: recentOngoingTasks[indexPath.row], indexPath: indexPath)
-        print(indexPath.row)
+//        print(indexPath.row)
         return cell
     }
 }
