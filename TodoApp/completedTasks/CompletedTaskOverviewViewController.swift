@@ -44,7 +44,7 @@ class CompletedTaskOverviewViewController: UIViewController, UITableViewDelegate
     //MARK: helpers:
         func loadOngoingTask() {
             ongoingTasks = []
-            GetTasksInFirestore(compelte: true){(documents) in
+            GetTasksInFirestore(complete: true){(documents) in
                 for document in documents {
                     var tempDict : Dictionary = document.data() as Dictionary as Dictionary
                     tempDict["ID"] = document.documentID
