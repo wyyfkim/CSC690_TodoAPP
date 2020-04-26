@@ -14,20 +14,14 @@ class OngoingTaskTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
     func generateCell(taskList: Dictionary<String, Any>, indexPath: IndexPath) {
-//        self.indexPath = indexPath
         self.taskTitle.text = taskList["taskTitle"] as? String
       
     }
 }
-
-//["taskTitle": 1, "taskDeadline": 1, "taskDes": 1, "complete": 0]

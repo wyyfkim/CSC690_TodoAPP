@@ -17,17 +17,11 @@ class CompletedTaskOverviewViewController: UIViewController, UITableViewDelegate
             loadOngoingTask()
             tableview.reloadData()
         }
-    //    override func viewDidAppear(_ animated: Bool) {
-    //        ongoingTasks = []
-    //        loadOngoingTask()
-    //        tableview.reloadData()
-    //    }
+    
         override func viewDidLoad() {
             super.viewDidLoad()
-    //        loadOngoingTask()
             tableview.delegate = self
             tableview.dataSource = self
-            // Do any additional setup after loading the view.
         }
     
     
@@ -55,8 +49,6 @@ class CompletedTaskOverviewViewController: UIViewController, UITableViewDelegate
                     var tempDict : Dictionary = document.data() as Dictionary as Dictionary
                     tempDict["ID"] = document.documentID
                     self.ongoingTasks.append(tempDict)
-    //                print(document.data())
-    //                print(type(of: document.data()))
                 }
                 self.tableview.reloadData()
             }
@@ -71,13 +63,10 @@ class CompletedTaskOverviewViewController: UIViewController, UITableViewDelegate
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "CompletedCell", for: indexPath) as! CompletedTaskTableViewCell
             
-    //        cell.delegate = self
-            
             var recentOngoingTasks: [Dictionary]! = ongoingTasks
             
             
             cell.generateCell(taskList: recentOngoingTasks[indexPath.row], indexPath: indexPath)
-//            print(indexPath.row)
             return cell
         }
 }

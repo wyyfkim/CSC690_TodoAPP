@@ -18,17 +18,14 @@ class OngoingTaskOverviewViewController: UIViewController, UITableViewDelegate, 
         loadOngoingTask()
         tableview.reloadData()
     }
-//    override func viewDidAppear(_ animated: Bool) {
-////        ongoingTasks = []
-////        loadOngoingTask()
-////        tableview.reloadData()
-//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        loadOngoingTask()
         tableview.delegate = self
         tableview.dataSource = self
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(loadOngoingTask),
+                                               name: NSNotification.Name(rawValue: "loadTasks"), object: nil)
     }
     
     //MARK: IBActions:
@@ -50,15 +47,13 @@ class OngoingTaskOverviewViewController: UIViewController, UITableViewDelegate, 
     
     
     //MARK: helpers:
-    func loadOngoingTask() {
+    @objc func loadOngoingTask() {
         ongoingTasks = []
         GetTasksInFirestore(compelte: false){(documents) in
             for document in documents {
                 var tempDict : Dictionary = document.data() as Dictionary as Dictionary
                 tempDict["ID"] = document.documentID
                 self.ongoingTasks.append(tempDict)
-//                print(document.data())
-//                print(type(of: document.data()))
             }
             self.tableview.reloadData()
         }
@@ -66,20 +61,17 @@ class OngoingTaskOverviewViewController: UIViewController, UITableViewDelegate, 
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print(ongoingTasks.count)
         return ongoingTasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! OngoingTaskTableViewCell
-        
-//        cell.delegate = self
+    
         
         var recentOngoingTasks: [Dictionary]! = ongoingTasks
         
         cell.generateCell(taskList: recentOngoingTasks[indexPath.row], indexPath: indexPath)
-//        print(indexPath.row)
         return cell
     }
 }

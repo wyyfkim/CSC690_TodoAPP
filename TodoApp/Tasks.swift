@@ -18,16 +18,12 @@ class Task {
     var description: String?
 
     //MARK: Initializers
-
     init(_objectId: String, _title: String, _deadline: String, _description: String) {
         objectId = _objectId
         title = _title
         deadline = _deadline
         description = _description
     }
-//    class func createTaks(titile: String, deadline: String, description: String, completion: @escaping (_ error: Error?) -> Void ) {
-//
-//    }
 }
 
 func CreateTaskInFirestore(withValues : [String : Any], completion: @escaping (_ error: Error?) -> Void) {
