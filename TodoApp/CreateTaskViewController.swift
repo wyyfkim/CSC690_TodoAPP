@@ -15,12 +15,13 @@ class CreateTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     //Mark: IBAction
     @IBAction func doneButtonPressed(_ sender: Any) {
+        if taskTitleText.text == "" && deadlineText.text == "" && taskDescriptionText.text == "" {
+            return
+        }
         if taskTitleText.text == "" {
             taskTitleText.text = "No title"
         }
@@ -37,17 +38,9 @@ class CreateTaskViewController: UIViewController {
                 return
             }
         }
-//        let ongoingTasks = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ongoingTask") as! OngoingTaskOverviewViewController
-//
-//        self.definesPresentationContext = true
-//
-//        ongoingTasks.modalPresentationStyle = .fullScreen
-//        self.present(ongoingTasks, animated: true, completion: nil)
-//
+        print("Starting sending notification message back to ongoing view controller")
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTasks"), object: nil)
         self.dismiss(animated: true, completion: nil)
-        
-//        self.present(mainView, animated: true, completion: nil)
-        
     }
     @IBAction func cancelButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
