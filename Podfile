@@ -11,6 +11,7 @@ pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 pod 'Firebase/Firestore'
 pod 'ProgressHUD'
+pod 'FirebaseFirestoreSwift'
 
   # Pods for TodoApp
 

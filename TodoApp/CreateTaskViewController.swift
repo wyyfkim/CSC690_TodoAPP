@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class CreateTaskViewController: UIViewController {
     @IBOutlet weak var taskTitleText: UITextField!
@@ -31,7 +32,7 @@ class CreateTaskViewController: UIViewController {
         if taskDescriptionText.text == "" {
             taskDescriptionText.text = "-"
         }
-        var tempDictionary : Dictionary = ["taskTitle" : taskTitleText.text, "taskDeadline" : deadlineText.text, "taskDes" : taskDescriptionText.text, "complete" : false] as [String: Any]
+        var tempDictionary : Dictionary = ["taskTitle" : taskTitleText.text, "taskDeadline" : deadlineText.text, "taskDes" : taskDescriptionText.text, "createTime" : NSDate().timeIntervalSince1970, "complete" : false] as [String: Any]
         CreateTaskInFirestore(withValues: tempDictionary) {(error) in
             if error != nil {
                 print(error?.localizedDescription)
@@ -46,9 +47,5 @@ class CreateTaskViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func markCompleteButtonPressed(_ sender: Any) {
-        
-        
     }
-    
-
 }

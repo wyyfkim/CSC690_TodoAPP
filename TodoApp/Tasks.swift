@@ -16,13 +16,15 @@ class Task {
     var title: String?
     var deadline: String?
     var description: String?
+    var createTime: NSNumber?
 
     //MARK: Initializers
-    init(_objectId: String, _title: String, _deadline: String, _description: String) {
+    init(_objectId: String, _title: String, _deadline: String, _description: String, _createTime: NSNumber) {
         objectId = _objectId
         title = _title
         deadline = _deadline
         description = _description
+        createTime = _createTime
     }
 }
 
@@ -50,8 +52,8 @@ func UpdateTaskInFirestore(taskID: String, withValues : [String : Any], completi
     }
 }
 
-func GetTasksInFirestore(compelte: Bool, completion:@escaping(_ querySnapshot:[QueryDocumentSnapshot])->Void) {
-    Firestore.firestore().collection("Task").whereField("complete", isEqualTo: compelte).getDocuments() { (querySnapshot, err) in
+func GetTasksInFirestore(complete: Bool, completion:@escaping(_ querySnapshot:[QueryDocumentSnapshot])->Void) {
+    Firestore.firestore().collection("Task").whereField("complete", isEqualTo: complete).order(by: "createTime", descending: true).getDocuments() { (querySnapshot, err) in
         if let err = err {
             print("Error getting documents: \(err)")
         } else {
@@ -62,5 +64,4 @@ func GetTasksInFirestore(compelte: Bool, completion:@escaping(_ querySnapshot:[Q
 
     }
 }
-
 

@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var taskDescription: UITextView!
     @IBOutlet weak var markCompleteButton: UIButton!
     var task : Dictionary<String, Any>?
+    var createTime : NSNumber?
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class DetailViewController: UIViewController {
             if task!["complete"] as! Bool {
                 markCompleteButton.isHidden = true
             }
+            createTime = task!["createTime"] as! NSNumber
         }
     }
     //MARK: IBAction
@@ -38,7 +40,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
-        var tempDict : Dictionary<String, Any> = ["taskTitle" : taskTitle.text, "taskDeadline" : taskDeadline.text, "taskDes" : taskDescription.text, "complete" : task!["complete"]] as [String : Any]
+        var tempDict : Dictionary<String, Any> = ["taskTitle" : taskTitle.text, "taskDeadline" : taskDeadline.text, "taskDes" : taskDescription.text, "complete" : task!["complete"], "createTime" : createTime] as [String : Any]
         
         var documentID : String = task!["ID"] as! String
         UpdateTaskInFirestore(taskID: documentID, withValues: tempDict) {(error) in
@@ -52,7 +54,7 @@ class DetailViewController: UIViewController {
     
     @IBAction func markCompleteButtonPressed(_ sender: Any) {
         if task != nil {
-            var tempDict : Dictionary<String, Any> = ["taskTitle" : taskTitle.text, "taskDeadline" : taskDeadline.text, "taskDes" : taskDescription.text, "complete" : true] as [String : Any]
+            var tempDict : Dictionary<String, Any> = ["taskTitle" : taskTitle.text, "taskDeadline" : taskDeadline.text, "taskDes" : taskDescription.text, "complete" : true, "createTime" : createTime] as [String : Any]
             
             var documentID : String = task!["ID"] as! String
             UpdateTaskInFirestore(taskID: documentID, withValues: tempDict) {(error) in
